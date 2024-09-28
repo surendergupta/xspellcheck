@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+# Spell Check and Auto-Correction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple React application that implements a basic spell check and auto-correction feature using a custom dictionary. As you type, the app suggests corrections for common spelling mistakes in real time.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Custom Dictionary:** Predefined corrections for common spelling mistakes.
+- **Real-time Spell Check:** As the user types, the application checks each word and suggests corrections if a match is found in the dictionary.
+- **Interactive User Interface:** Displays suggested corrections dynamically based on user input.
 
-### `npm start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can see the live demo of the project deployed on Vercel:
+[Spell Check and Auto-Correction Demo](https://xspellcheck-rose-five.vercel.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before you begin, ensure you have the following tools installed on your machine:
 
-### `npm run build`
+- **Node.js** (version 14 or higher)
+- **npm** (Node package manager)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Installation`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Follow these steps to set up and run the project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+```bash
+git clone https://github.com/surendergupta/xspellcheck.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate into the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd xspellcheck
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
 
-## Learn More
+3. Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+4. Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application will run on http://localhost:3000.
 
-### Making a Progressive Web App
+### Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Once the app is running, you'll see a text area where you can enter text.
+2. As you type, the app will suggest corrections for any words that match predefined entries in the custom dictionary.
+3. If a correction is available, it will be displayed as a suggestion below the text area.
 
-### Advanced Configuration
+### Example
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+For example, typing the following text:
 
-### Deployment
+```bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+I will wrok on teh project fot exampl.
 
-### `npm run build` fails to minify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Will suggest corrections:
+
+```bash
+
+Did you mean: work? (for wrok)
+Did you mean: the? (for teh)
+Did you mean: for? (for fot)
+Did you mean: example? (for exampl)
+
+
+```
+
+## Code Structure
+
+The project consists of a functional component, App, implemented using React's useState hook to manage state for the input text and the suggested correction.
+
+## Key Components:
+
+- **App Component:** The core logic of the app, responsible for capturing user input, checking for spelling mistakes, and displaying suggestions.
+- **State Management:**
+    - **inputText:** Tracks the user's typed input.
+    - **suggestedText:** Holds the current suggested correction, if any.
+- **Custom Dictionary:** A predefined object mapping common misspellings to their correct form.
+
+## How It Works
+
+1. The ```handleInputChange``` function listens for input changes in the textarea.
+2. It splits the input text into words and checks each word against the custom dictionary.
+3. If a correction is found, the first misspelled word is displayed as a suggestion.
+
+
+## Custom Dictionary
+
+The application currently uses the following custom dictionary:
+
+```javascript
+
+const customDictionary = {
+  teh: "the",
+  wrok: "work",
+  fot: "for",
+  exampl: "example",
+};
+
+
+```
+
+Feel free to expand the dictionary by adding more words and their corrections.
+
+## Future Improvements
+
+- **Dynamic Dictionary:** Allow users to add custom corrections to the dictionary dynamically.
+- **Multiple Suggestions:** Show corrections for all misspelled words in the input text, not just the first one.
+- **Enhance UI/UX:** Add a button to apply the suggested corrections directly to the input text.
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues or pull requests. Contributions, bug reports, and feature requests are welcome!
+
+1. Fork the project
+2. Create your feature branch: ```git checkout -b feature/my-new-feature```
+3. Commit your changes: ```git commit -am 'Add some feature'```
+4. Push to the branch: ```git push origin feature/my-new-feature```
+5. Create a new pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## **Author**
+
+Made with ❤️ by [Surender Gupta](mailto:gupta.surender.1990@gmail.com)
+
+Feel free to reach out via email for any questions or suggestions!
